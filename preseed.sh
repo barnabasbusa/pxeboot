@@ -73,7 +73,7 @@ d-i netcfg/get_domain string unassigned-domain
 # If you want to force a hostname, regardless of what either the DHCP
 # server returns or what the reverse DNS entry for the IP is, uncomment
 # and adjust the following line.
-#d-i netcfg/hostname string somehost
+d-i netcfg/hostname string testinghostname
 
 # Disable that annoying WEP key dialog.
 d-i netcfg/wireless_wep string
@@ -120,16 +120,16 @@ d-i mirror/http/proxy string
 #d-i passwd/root-password password r00tme
 #d-i passwd/root-password-again password r00tme
 # or encrypted using a crypt(3)  hash.
-#d-i passwd/root-password-crypted password [crypt(3) hash]
+d-i passwd/root-password-crypted password [$6$xyz$KjCZHEdqxTYwTtNl5V9.kbbHMmYCFW2wWXDqJpajAjcq1BOhIweF7oR2P5ELeCIUJMC.XuGytJod6yPEqqzVj.]
 
 # To create a normal user account.
-#d-i passwd/user-fullname string Debian User
-#d-i passwd/username string debian
+d-i passwd/user-fullname string Devops User
+d-i passwd/username string devops
 # Normal user's password, either in clear text
 #d-i passwd/user-password password insecure
 #d-i passwd/user-password-again password insecure
 # or encrypted using a crypt(3) hash.
-#d-i passwd/user-password-crypted password [crypt(3) hash]
+d-i passwd/user-password-crypted password [$6$xyz$KjCZHEdqxTYwTtNl5V9.kbbHMmYCFW2wWXDqJpajAjcq1BOhIweF7oR2P5ELeCIUJMC.XuGytJod6yPEqqzVj.]
 # Create the first user with the specified UID instead of the default.
 #d-i passwd/user-uid string 1010
 
@@ -154,7 +154,7 @@ d-i clock-setup/ntp boolean true
 ## Partitioning example
 # If the system has free space you can choose to only partition that space.
 # This is only honoured if partman-auto/method (below) is not set.
-#d-i partman-auto/init_automatically_partition select biggest_free
+d-i partman-auto/init_automatically_partition select biggest_free
 
 # Alternatively, you may specify a disk to partition. If the system has only
 # one disk the installer will default to using that, but otherwise the device
@@ -167,7 +167,7 @@ d-i clock-setup/ntp boolean true
 # - regular: use the usual partition types for your architecture
 # - lvm:     use LVM to partition the disk
 # - crypto:  use LVM within an encrypted partition
-d-i partman-auto/method string lvm
+# d-i partman-auto/method string lvm
 
 # You can define the amount of space that will be used for the LVM volume
 # group. It can either be a size with its unit (eg. 20 GB), a percentage of
@@ -315,7 +315,7 @@ d-i partman/confirm_nooverwrite boolean true
 
 # The kernel image (meta) package to be installed; "none" can be used if no
 # kernel is to be installed.
-#d-i base-installer/kernel/image string linux-image-686
+d-i base-installer/kernel/image string linux-image-686
 
 ### Apt setup
 # Choose, if you want to scan additional installation media
