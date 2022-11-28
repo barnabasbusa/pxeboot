@@ -23,10 +23,10 @@ d-i keyboard-configuration/xkb-keymap select us
 
 # netcfg will choose an interface that has link if possible. This makes it
 # skip displaying a list if there is more than one interface.
-d-i netcfg/choose_interface select auto
+#d-i netcfg/choose_interface select auto
 
 # To pick a particular interface instead:
-#d-i netcfg/choose_interface select eth1
+d-i netcfg/choose_interface select enp1s0
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
@@ -100,7 +100,7 @@ d-i netcfg/wireless_wep string
 # Default value for the mirror protocol: http.
 #d-i mirror/protocol string ftp
 d-i mirror/country string manual
-d-i mirror/http/hostname string http.us.debian.org
+d-i mirror/http/hostname string deb.debian.org
 d-i mirror/http/directory string /debian
 d-i mirror/http/proxy string
 
@@ -322,7 +322,7 @@ d-i base-installer/kernel/image string linux-image-686
 # (default: false).
 d-i apt-setup/cdrom/set-first boolean false
 # You can choose to install non-free and contrib software.
-#d-i apt-setup/non-free boolean true
+d-i apt-setup/non-free boolean true
 #d-i apt-setup/contrib boolean true
 # Uncomment the following line, if you don't want to have the sources.list
 # entry for a DVD/BD installation image active in the installed system
@@ -336,7 +336,8 @@ d-i apt-setup/cdrom/set-first boolean false
 #d-i apt-setup/services-select multiselect security, updates
 #d-i apt-setup/security_host string security.debian.org
 
-# Additional repositories, local[0-9] available
+
+ # Additional repositories, local[0-9] available
 #d-i apt-setup/local0/repository string \
 #       http://local.server/debian stable main
 #d-i apt-setup/local0/comment string local server
@@ -365,19 +366,19 @@ d-i apt-setup/cdrom/set-first boolean false
 
 # Or choose to not get the tasksel dialog displayed at all (and don't install
 # any packages):
-#d-i pkgsel/run_tasksel boolean false
+d-i pkgsel/run_tasksel boolean false
 
 # Individual additional packages to install
-#d-i pkgsel/include string openssh-server build-essential
+d-i pkgsel/include string openssh-server build-essential
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
-#d-i pkgsel/upgrade select none
+d-i pkgsel/upgrade select full-upgrade
 
 # You can choose, if your system will report back on what software you have
 # installed, and what software you use. The default is not to report back,
 # but sending reports helps the project determine what software is most
 # popular and should be included on the first CD/DVD.
-#popularity-contest popularity-contest/participate boolean false
+popularity-contest popularity-contest/participate boolean false
 
 ### Boot loader installation
 # Grub is the boot loader (for x86).
