@@ -30,7 +30,7 @@ d-i	hw-detect/load_media	boolean	false
 #d-i netcfg/choose_interface select auto
 
 # To pick a particular interface instead:
-d-i netcfg/choose_interface select enp1s0: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller
+d-i netcfg/choose_interface select enp1s0f0: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ether
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
