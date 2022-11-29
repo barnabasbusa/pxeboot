@@ -26,7 +26,7 @@ d-i keyboard-configuration/xkb-keymap select us
 #d-i netcfg/choose_interface select auto
 
 # To pick a particular interface instead:
-d-i netcfg/choose_interface select enp1s0
+d-i netcfg/choose_interface select enp1s0: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
@@ -67,13 +67,13 @@ d-i netcfg/choose_interface select enp1s0
 # Any hostname and domain names assigned from dhcp take precedence over
 # values set here. However, setting the values still prevents the questions
 # from being shown, even if values come from dhcp.
-d-i netcfg/get_hostname string unassigned-hostname
-d-i netcfg/get_domain string unassigned-domain
+d-i netcfg/get_hostname string asrock-berlin-03
+d-i netcfg/get_domain string 
 
 # If you want to force a hostname, regardless of what either the DHCP
 # server returns or what the reverse DNS entry for the IP is, uncomment
 # and adjust the following line.
-d-i netcfg/hostname string testinghostname
+#d-i netcfg/hostname string 
 
 # Disable that annoying WEP key dialog.
 d-i netcfg/wireless_wep string
@@ -99,7 +99,7 @@ d-i netcfg/wireless_wep string
 # If you select ftp, the mirror/country string does not need to be set.
 # Default value for the mirror protocol: http.
 #d-i mirror/protocol string ftp
-d-i mirror/country string manual
+d-i mirror/country string DE
 d-i mirror/http/hostname string deb.debian.org
 d-i mirror/http/directory string /debian
 d-i mirror/http/proxy string
@@ -120,7 +120,7 @@ d-i mirror/http/proxy string
 #d-i passwd/root-password password r00tme
 #d-i passwd/root-password-again password r00tme
 # or encrypted using a crypt(3)  hash.
-d-i passwd/root-password-crypted password [$6$xyz$KjCZHEdqxTYwTtNl5V9.kbbHMmYCFW2wWXDqJpajAjcq1BOhIweF7oR2P5ELeCIUJMC.XuGytJod6yPEqqzVj.]
+d-i passwd/root-password-crypted password $6$xyz$KjCZHEdqxTYwTtNl5V9.kbbHMmYCFW2wWXDqJpajAjcq1BOhIweF7oR2P5ELeCIUJMC.XuGytJod6yPEqqzVj.
 
 # To create a normal user account.
 d-i passwd/user-fullname string Devops User
@@ -129,7 +129,7 @@ d-i passwd/username string devops
 #d-i passwd/user-password password insecure
 #d-i passwd/user-password-again password insecure
 # or encrypted using a crypt(3) hash.
-d-i passwd/user-password-crypted password [$6$xyz$KjCZHEdqxTYwTtNl5V9.kbbHMmYCFW2wWXDqJpajAjcq1BOhIweF7oR2P5ELeCIUJMC.XuGytJod6yPEqqzVj.]
+d-i passwd/user-password-crypted password $6$xyz$KjCZHEdqxTYwTtNl5V9.kbbHMmYCFW2wWXDqJpajAjcq1BOhIweF7oR2P5ELeCIUJMC.XuGytJod6yPEqqzVj.
 # Create the first user with the specified UID instead of the default.
 #d-i passwd/user-uid string 1010
 
