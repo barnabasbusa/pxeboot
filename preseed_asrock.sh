@@ -27,10 +27,10 @@ d-i	hw-detect/load_media	boolean	false
 
 # netcfg will choose an interface that has link if possible. This makes it
 # skip displaying a list if there is more than one interface.
-#d-i netcfg/choose_interface select auto
+d-i netcfg/choose_interface select auto
 
 # To pick a particular interface instead:
-d-i netcfg/choose_interface select enp1s0f0: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ether
+#d-i netcfg/choose_interface select enp1s0f0: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ether
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
@@ -72,8 +72,8 @@ d-i netcfg/dhcpv6_timeout string 60
 # Any hostname and domain names assigned from dhcp take precedence over
 # values set here. However, setting the values still prevents the questions
 # from being shown, even if values come from dhcp.
-d-i netcfg/get_hostname string asrock-berlin-03
-d-i netcfg/get_domain string 
+d-i netcfg/get_hostname seen true
+d-i netcfg/get_domain seen true
 
 # If you want to force a hostname, regardless of what either the DHCP
 # server returns or what the reverse DNS entry for the IP is, uncomment
