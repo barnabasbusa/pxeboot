@@ -15,6 +15,10 @@ d-i debian-installer/locale string en_US
 d-i keyboard-configuration/xkb-keymap select us
 # d-i keyboard-configuration/toggle select No toggling
 
+# Load missing firmware from removable media?
+d-i	hw-detect/load_firmware	boolean	false
+d-i	hw-detect/load_media	boolean	false
+
 ### Network configuration
 # Disable network configuration entirely. This is useful for cdrom
 # installations on non-networked devices where the network questions,
@@ -37,8 +41,6 @@ d-i netcfg/link_wait_timeout string 25
 d-i netcfg/dhcp_timeout string 60
 d-i netcfg/dhcpv6_timeout string 60
 
-# Load missing firmware from removable media?
-d-i	hw-detect/load_firmware	boolean	false
 
 # Automatic network configuration is the default.
 # If you prefer to configure the network manually, uncomment this line and
