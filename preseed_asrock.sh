@@ -30,12 +30,12 @@ d-i netcfg/choose_interface select enp1s0: Realtek Semiconductor Co., Ltd. RTL81
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
-#d-i netcfg/link_wait_timeout string 10
+d-i netcfg/link_wait_timeout string 25
 
 # If you have a slow dhcp server and the installer times out waiting for
 # it, this might be useful.
-#d-i netcfg/dhcp_timeout string 60
-#d-i netcfg/dhcpv6_timeout string 60
+d-i netcfg/dhcp_timeout string 60
+d-i netcfg/dhcpv6_timeout string 60
 
 # Automatic network configuration is the default.
 # If you prefer to configure the network manually, uncomment this line and
