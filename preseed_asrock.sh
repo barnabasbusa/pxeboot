@@ -72,8 +72,8 @@ d-i netcfg/dhcpv6_timeout string 60
 # Any hostname and domain names assigned from dhcp take precedence over
 # values set here. However, setting the values still prevents the questions
 # from being shown, even if values come from dhcp.
-d-i netcfg/get_hostname string asrock-debian
-d-i netcfg/get_domain string testing.com
+d-i netcfg/get_hostname string unassigned-hostname 
+d-i netcfg/get_domain string unassigned-domain
 
 # If you want to force a hostname, regardless of what either the DHCP
 # server returns or what the reverse DNS entry for the IP is, uncomment
@@ -421,6 +421,13 @@ d-i grub-installer/with_other_os boolean true
 # installed system (if supported by the bootloader installer).
 # Note: options passed to the installer will be added automatically.
 #d-i debian-installer/add-kernel-opts string nousb
+
+# To allow root login with password, which isn't the best but used to have similar setups as cloud instances
+d-i preseed/late_command string \
+    in-target sed -i 's/PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
+
+d-i pressed/late_command string\
+    in-target /bin/bash -c 'echo asrock-berlin-03 > /etc/hostname'
 
 ### Finishing up the installation
 # During installations from serial console, the regular virtual consoles
