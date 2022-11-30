@@ -422,11 +422,6 @@ d-i grub-installer/with_other_os boolean true
 # Note: options passed to the installer will be added automatically.
 #d-i debian-installer/add-kernel-opts string nousb
 
-# To allow root login with password, which isn't the best but used to have similar setups as cloud instances
-d-i preseed/late_command string in-target sed -i 's/PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
-
-d-i pressed/late_command string in-target /bin/bash -c 'echo asrock-berlin-03 > /etc/hostname'
-
 ### Finishing up the installation
 # During installations from serial console, the regular virtual consoles
 # (VT1-VT6) are normally disabled in /etc/inittab. Uncomment the next
@@ -477,4 +472,7 @@ d-i finish-install/reboot_in_progress note
 # still a usable /target directory. You can chroot to /target and use it
 # directly, or use the apt-install and in-target commands to easily install
 # packages and run commands in the target system.
-#d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
+d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
+# To allow root login with password, which isn't the best but used to have similar setups as cloud instances
+d-i preseed/late_command string in-target sed -i 's/PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
+d-i pressed/late_command string in-target /bin/bash -c 'echo asrock-berlin-03 > /etc/hostname'
