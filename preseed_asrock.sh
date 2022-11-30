@@ -125,16 +125,21 @@ d-i mirror/http/proxy string
 #d-i passwd/root-password password r00tme
 #d-i passwd/root-password-again password r00tme
 # or encrypted using a crypt(3)  hash.
+d-i passwd/root-login boolean true
+d-i passwd/make-user boolean false
 d-i passwd/root-password-crypted password $6$xyz$KjCZHEdqxTYwTtNl5V9.kbbHMmYCFW2wWXDqJpajAjcq1BOhIweF7oR2P5ELeCIUJMC.XuGytJod6yPEqqzVj.
+d-i user-setup/encrypt-home boolean false
+# To allow root login with password, which isn't the best but needed for my use case
+d-i preseed/late_command string in-target sed -i 's/^.*PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
 # To create a normal user account.
-d-i passwd/user-fullname string Devops User
-d-i passwd/username string devops
+# d-i passwd/user-fullname string Devops User
+# d-i passwd/username string devops
 # Normal user's password, either in clear text
 #d-i passwd/user-password password insecure
 #d-i passwd/user-password-again password insecure
 # or encrypted using a crypt(3) hash.
-d-i passwd/user-password-crypted password $6$xyz$KjCZHEdqxTYwTtNl5V9.kbbHMmYCFW2wWXDqJpajAjcq1BOhIweF7oR2P5ELeCIUJMC.XuGytJod6yPEqqzVj.
+# d-i passwd/user-password-crypted password $6$xyz$KjCZHEdqxTYwTtNl5V9.kbbHMmYCFW2wWXDqJpajAjcq1BOhIweF7oR2P5ELeCIUJMC.XuGytJod6yPEqqzVj.
 # Create the first user with the specified UID instead of the default.
 #d-i passwd/user-uid string 1010
 
@@ -472,7 +477,6 @@ d-i finish-install/reboot_in_progress note
 # still a usable /target directory. You can chroot to /target and use it
 # directly, or use the apt-install and in-target commands to easily install
 # packages and run commands in the target system.
-d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
+#d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
 # To allow root login with password, which isn't the best but used to have similar setups as cloud instances
-d-i preseed/late_command string in-target sed -i 's/PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
-d-i pressed/late_command string in-target /bin/bash -c 'echo asrock-berlin-03 > /etc/hostname'
+# d-i pressed/late_command string in-target /bin/bash -c 'echo asrock-berlin-03 > /etc/hostname'
