@@ -379,7 +379,7 @@ d-i apt-setup/non-free boolean true
 d-i pkgsel/run_tasksel boolean false
 
 # Individual additional packages to install
-d-i pkgsel/include string openssh-server build-essential
+d-i pkgsel/include string openssh-server build-essential python3 sudo 
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
 d-i pkgsel/upgrade select full-upgrade
@@ -479,4 +479,3 @@ d-i finish-install/reboot_in_progress note
 # packages and run commands in the target system.
 #d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
 # To allow root login with password, which isn't the best but used to have similar setups as cloud instances
-# d-i pressed/late_command string in-target /bin/bash -c 'echo asrock-berlin-03 > /etc/hostname'
