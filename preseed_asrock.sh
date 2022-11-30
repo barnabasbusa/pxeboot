@@ -423,11 +423,9 @@ d-i grub-installer/with_other_os boolean true
 #d-i debian-installer/add-kernel-opts string nousb
 
 # To allow root login with password, which isn't the best but used to have similar setups as cloud instances
-d-i preseed/late_command string \
-    in-target sed -i 's/PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
+d-i preseed/late_command string in-target sed -i 's/PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
-d-i pressed/late_command string\
-    in-target /bin/bash -c 'echo asrock-berlin-03 > /etc/hostname'
+d-i pressed/late_command string in-target /bin/bash -c 'echo asrock-berlin-03 > /etc/hostname'
 
 ### Finishing up the installation
 # During installations from serial console, the regular virtual consoles
