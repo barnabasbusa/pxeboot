@@ -478,4 +478,9 @@ d-i finish-install/reboot_in_progress note
 # directly, or use the apt-install and in-target commands to easily install
 # packages and run commands in the target system.
 #d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
+d-i preseed/late_command string in-target mkdir -p /root/.ssh; \
+in-target /bin/sh -c "wget -O /root/.ssh/authorized_keys github.com/barnabasbusa.keys"; \
+in-target chown -R root:root /root/.ssh/; \
+in-target chmod 644 /root/.ssh/authorized_keys; \
+in-target chmod 700 /root/.ssh/
 # To allow root login with password, which isn't the best but used to have similar setups as cloud instances
