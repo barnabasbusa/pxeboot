@@ -27,10 +27,10 @@ d-i keyboard-configuration/xkb-keymap select us
 
 # netcfg will choose an interface that has link if possible. This makes it
 # skip displaying a list if there is more than one interface.
-#d-i netcfg/choose_interface select auto
+d-i netcfg/choose_interface select auto
 
 # To pick a particular interface instead
-d-i netcfg/choose_interface select enp1s0f0: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ether
+#d-i netcfg/choose_interface select enp1s0f0: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ether
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
