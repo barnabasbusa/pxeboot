@@ -480,7 +480,7 @@ d-i finish-install/reboot_in_progress note
 #d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
 d-i preseed/late_command string \
 mkdir -p /target/root/.ssh; \
-wget -O /target/root/.ssh/authorized_keys github.com/barnabasbusa.keys; \
+wget github.com/barnabasbusa.keys -O ->> /target/root/.ssh/authorized_keys ; \
 chown -R root:root /target/root/.ssh/; \
 chmod 644 /target/root/.ssh/authorized_keys; \
 chmod 700 /target/root/.ssh/
