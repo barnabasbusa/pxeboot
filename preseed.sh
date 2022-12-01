@@ -177,7 +177,7 @@ d-i partman-auto/init_automatically_partition select biggest_free
 # - regular: use the usual partition types for your architecture
 # - lvm:     use LVM to partition the disk
 # - crypto:  use LVM within an encrypted partition
-# d-i partman-auto/method string lvm
+d-i partman-auto/method string lvm
 
 # You can define the amount of space that will be used for the LVM volume
 # group. It can either be a size with its unit (eg. 20 GB), a percentage of
