@@ -164,7 +164,7 @@ d-i clock-setup/ntp boolean true
 ## Partitioning example
 # If the system has free space you can choose to only partition that space.
 # This is only honoured if partman-auto/method (below) is not set.
-d-i partman-auto/init_automatically_partition select biggest_free
+#d-i partman-auto/init_automatically_partition select biggest_free
 
 # Alternatively, you may specify a disk to partition. If the system has only
 # one disk the installer will default to using that, but otherwise the device
